@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://b1n.io/</loc>
+    <loc>https://b1nhack.github.io/</loc>
     <lastmod>2022-12-10T23:26:50-08:00</lastmod>
   </url><url>
-    <loc>https://b1n.io/tags/binary/</loc>
+    <loc>https://b1nhack.github.io/tags/binary/</loc>
     <lastmod>2022-12-10T23:26:50-08:00</lastmod>
   </url><url>
-    <loc>https://b1n.io/posts/helloworld/</loc>
+    <loc>https://b1nhack.github.io/posts/helloworld/</loc>
     <lastmod>2022-12-10T23:26:50-08:00</lastmod>
   </url><url>
-    <loc>https://b1n.io/posts/</loc>
+    <loc>https://b1nhack.github.io/posts/</loc>
     <lastmod>2022-12-10T23:26:50-08:00</lastmod>
   </url><url>
-    <loc>https://b1n.io/tags/</loc>
+    <loc>https://b1nhack.github.io/tags/</loc>
     <lastmod>2022-12-10T23:26:50-08:00</lastmod>
   </url><url>
-    <loc>https://b1n.io/archives/</loc>
+    <loc>https://b1nhack.github.io/archives/</loc>
   </url><url>
-    <loc>https://b1n.io/categories/</loc>
+    <loc>https://b1nhack.github.io/categories/</loc>
   </url><url>
-    <loc>https://b1n.io/search/</loc>
+    <loc>https://b1nhack.github.io/search/</loc>
   </url>
 </urlset>
