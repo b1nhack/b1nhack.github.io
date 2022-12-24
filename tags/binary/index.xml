@@ -12,7 +12,7 @@
       <pubDate>Sat, 24 Dec 2022 01:32:07 -0500</pubDate>
       
       <guid>https://b1n.io/posts/cpp-shellcode/</guid>
-      <description>cpp-shellcode I made a repository of Windows Shellcode runners: cpp-shellcode.
+      <description>I made a repository of Windows Shellcode runners: cpp-shellcode.
 Here are some introductions:
 cpp-shellcode is A repository of Windows Shellcode runners. The applications load and execute Shellcode using various API calls or techniques.
 :smiling_imp: THANKS @go-shellcode
