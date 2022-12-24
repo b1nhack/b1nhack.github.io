@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>binary on b1n.io</title>
-    <link>https://b1n.io/tags/binary/</link>
-    <description>Recent content in binary on b1n.io</description>
+    <title>shellcode on b1n.io</title>
+    <link>https://b1n.io/tags/shellcode/</link>
+    <description>Recent content in shellcode on b1n.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 24 Dec 2022 01:32:07 -0500</lastBuildDate><atom:link href="https://b1n.io/tags/binary/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Dec 2022 01:32:07 -0500</lastBuildDate><atom:link href="https://b1n.io/tags/shellcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cpp Shellcode</title>
       <link>https://b1n.io/posts/cpp-shellcode/</link>
@@ -15,7 +15,7 @@
       <description>I made a repository of Windows Shellcode runners: cpp-shellcode.
 Here are some introductions:
 cpp-shellcode is A repository of Windows Shellcode runners. The applications load and execute Shellcode using various API calls or techniques.
-:smiling_imp: THANKS @go-shellcode
+❤️ THANKS @go-shellcode
 The available Shellcode runners include:
 CreateFiber CreateRemoteThread CreateThread EtwpCreateEtwThread NtQueueApcThreadEx-Local CreateFiber This application leverages the Windows CreateFiber function from the Kernel32.dll to execute shellcode within this application&amp;rsquo;s process. This is usefull when you want to avoid remote process injection and want to avoid calling CreateThread.</description>
     </item>
