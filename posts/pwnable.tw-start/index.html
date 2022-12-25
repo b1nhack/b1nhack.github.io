@@ -42,8 +42,8 @@
 </span><span class=lnt>22
 </span><span class=lnt>23
 </span><span class=lnt>24
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>Dump of assembler code <span class=k>for</span> <span class=k>function</span> _start:
-</span></span><span class=line><span class=cl><span class=o>=</span>&gt; 0x08048060 &lt;+0&gt;:	push   esp
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Dump of assembler code for function _start:
+</span></span><span class=line><span class=cl>=&gt; 0x08048060 &lt;+0&gt;:	push   esp
 </span></span><span class=line><span class=cl>   0x08048061 &lt;+1&gt;:	push   0x804809d
 </span></span><span class=line><span class=cl>   0x08048066 &lt;+6&gt;:	xor    eax,eax
 </span></span><span class=line><span class=cl>   0x08048068 &lt;+8&gt;:	xor    ebx,ebx
@@ -71,7 +71,7 @@
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>   0x08048087 &lt;+39&gt;:	mov    ecx,esp
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>   0x08048087 &lt;+39&gt;:	mov    ecx,esp
 </span></span><span class=line><span class=cl>   0x08048089 &lt;+41&gt;:	mov    dl,0x14
 </span></span><span class=line><span class=cl>   0x0804808b &lt;+43&gt;:	mov    bl,0x1
 </span></span><span class=line><span class=cl>   0x0804808d &lt;+45&gt;:	mov    al,0x4
@@ -80,14 +80,14 @@
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>   0x08048091 &lt;+49&gt;:	xor    ebx,ebx
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>   0x08048091 &lt;+49&gt;:	xor    ebx,ebx
 </span></span><span class=line><span class=cl>   0x08048093 &lt;+51&gt;:	mov    dl,0x3c
 </span></span><span class=line><span class=cl>   0x08048095 &lt;+53&gt;:	mov    al,0x3
 </span></span><span class=line><span class=cl>   0x08048097 &lt;+55&gt;:	int    0x80
 </span></span></code></pre></td></tr></table></div></div><p><a href=https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md>系统调用号在线查询</a></p><p>read函数的<code>ecx</code>是之前设置的<code>ecx</code>值, 并未更改</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>mov    ecx,esp
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>mov    ecx,esp
 </span></span></code></pre></td></tr></table></div></div><p><code>ecx</code>是<code>esp</code></p><p><code>ecx</code>即使输出的目标地址也是输入的目标地址</p><p>随后程序退出</p><p>read函数读入<code>0x3c</code>字节, 会造成栈溢出, 且程序没有保护模式</p><p>考虑re2shellcode, 需要注意payload大小不超过<code>0x3c</code></p><p>程序一共<code>push</code>了7*4个字节, 程序最后恢复0x14栈空间, ret时又消耗4字节, 于是此时esp里的值就是程序开始压入的esp的值</p><p>此时esp是这样的:</p><p>esp->esp+4</p><p>于是第一次覆盖返回地址到<code>0x08048087</code>, 即可调用<code>sys_write</code>输出esp+4的值, 第二次输入的起始位置是esp</p><p>第一次覆盖只需要填充0x14字节任意内容, 用于抵消程序清栈操作</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>   0x08048099 &lt;+57&gt;:	add    esp,0x14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>   0x08048099 &lt;+57&gt;:	add    esp,0x14
 </span></span></code></pre></td></tr></table></div></div><p>然后以小端模式传入地址<code>0x08048087</code></p><p>泄露esp+4的值后, 第二次输入同理</p><p>0x14字节任意内容 + (esp+4地址+0x14) + shellcode</p><p>由于第二次输入的起始位置是esp, 泄露的esp是esp+4</p><p>所以esp+4 + 0x14就到shellcode的位置了(32位程序指针占用4字节)</p><p>EXP:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
