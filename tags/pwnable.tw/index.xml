@@ -5,7 +5,23 @@
     <link>https://b1n.io/tags/pwnable.tw/</link>
     <description>Recent content in pwnable.tw on b1n.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 24 Dec 2022 04:37:02 -0500</lastBuildDate><atom:link href="https://b1n.io/tags/pwnable.tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 01:08:22 -0500</lastBuildDate><atom:link href="https://b1n.io/tags/pwnable.tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pwnable.tw Orw</title>
+      <link>https://b1n.io/posts/pwnable.tw-orw/</link>
+      <pubDate>Sun, 25 Dec 2022 01:08:22 -0500</pubDate>
+      
+      <guid>https://b1n.io/posts/pwnable.tw-orw/</guid>
+      <description>题目提示: Read the flag from /home/orw/flag.
+Only open read write syscall are allowed to use.
+checksec:
+[*] &amp;#39;/home/kkkk/code/orw&amp;#39; Arch: i386-32-little RELRO: Partial RELRO Stack: Canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments 看一下伪代码:
+int __cdecl main(int argc, const char **argv, const char **envp) { orw_seccomp(); printf(&amp;#34;Give my your shellcode:&amp;#34;); read(0, &amp;amp;shellcode, 0xC8u); ((void (*)(void))shellcode)(); return 0; } 读取0xc8个字节, 然后转换为函数指针执行
+这道题只需要构建一个open read write的shellcode就可以了
+可以用pwntools自动完成
+from pwn import * context(os=&amp;#34;linux&amp;#34;, arch=&amp;#34;i386&amp;#34;, log_level=&amp;#34;debug&amp;#34;) r = remote(&amp;#34;chall.</description>
+    </item>
+    
     <item>
       <title>Pwnable.tw Start</title>
       <link>https://b1n.io/posts/pwnable.tw-start/</link>
