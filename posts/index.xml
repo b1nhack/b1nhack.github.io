@@ -5,7 +5,24 @@
     <link>https://b1n.io/posts/</link>
     <description>Recent content in Posts on b1n.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 25 Dec 2022 01:08:22 -0500</lastBuildDate><atom:link href="https://b1n.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Dec 2022 01:24:06 -0500</lastBuildDate><atom:link href="https://b1n.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SharkLoadLibrary</title>
+      <link>https://b1n.io/posts/sharkloadlibrary/</link>
+      <pubDate>Mon, 26 Dec 2022 01:24:06 -0500</pubDate>
+      
+      <guid>https://b1n.io/posts/sharkloadlibrary/</guid>
+      <description>SharkLoadLibrary 是 DarkLoadLibrary 的完整版
+在DarkLoadLibrary中的darkloadlibrary.h文件中, 作者定义了一组宏, 用于Control Flags
+#define LOAD_LOCAL_FILE 0x00000001 #define LOAD_REMOTE_FILE 0x00000002 #define LOAD_MEMORY	0x00000003 #define NO_LINK	0x00010000 可以看到, 作者早就定义好了LOAD_REMOTE_FILE的宏, 只不过在公开项目时删除了相关功能
+我将功能完善了, 开源在github供大家使用: SharkLoadLibrary
+以下是项目介绍:
+LoadLibrary for Children&amp;rsquo;s Paradise.
+:sailboat: Folk From DarkLoadLibrary and thanks.
+Feature New feature: LOAD_REMOTE_FILE
+Usage PDARKMODULE DarkModule = DarkLoadLibrary( LOAD_REMOTE_FILE, // control flags &amp;#34;http://xxxx/demo.dll&amp;#34;, // remote dll url, if loading from remote NULL, // dll buffer to load from if loading from memory 0, // dll size if loading from memory L&amp;#34;Demo&amp;#34; // dll name if loaded from memory and remote ); Build &amp;amp;&amp;amp; Test Environmental requirements libcurl</description>
+    </item>
+    
     <item>
       <title>Pwnable.tw Orw</title>
       <link>https://b1n.io/posts/pwnable.tw-orw/</link>
